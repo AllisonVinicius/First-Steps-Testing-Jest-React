@@ -13,7 +13,7 @@ function Counter() {
   return (
     <div className="counter">
       <h1 className={`counter__title ${getModifier()}`}>{counter}</h1>
-      <section className="buttons">
+      <section className="button">
         <button
           onClick={() => setCounter(counter + 1)}
           className="button button--increment"
