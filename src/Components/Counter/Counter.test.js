@@ -64,20 +64,40 @@ test("Deve conter um botao decrementar com as classes button e button--decrement
      
 });
 
-
-
 test("Se esta incrementando uma unidade no button incrementar", () => {
     render(<Counter />) //vai renderizar meu component count, render retorna um obj
    
     const buttonIncrement = screen.getByRole("button", {name: /incrementar/i}); //se existe um elemento button no components
 
+   
+    // testar se antes de ocorrer o evento do click ele esta nulo, que é o correto
+   expect(screen.queryByText("1")).toBeNull();
+
     //testar o evento do botão, se esta acionando.
     userEvent.click(buttonIncrement);
     expect(screen.getByText("1")).toBeInTheDocument(); //verifico se esta com o valor no documento apos testar o evento
-  
-     
-     
+       
 });
+
+
+
+
+test("Se esta decrementando, quando aciona o botão", () => {
+    render(<Counter />) //vai renderizar meu component count, render retorna um obj
+   
+    const buttonDecrement= screen.getByRole("button", {name: /decrementar/i}); //se existe um elemento button no components
+
+   
+    // testar se antes de ocorrer o evento do click ele esta tira uma unidade, que é o correto
+   expect(screen.queryByText("-1")).toBeNull();
+
+    //testar o evento do botão, se esta acionando.
+    userEvent.click(buttonDecrement);
+    expect(screen.getByText("-1")).toBeInTheDocument(); //verifico se esta com o valor no documento apos testar o evento
+       
+});
+
+
 
 
 
