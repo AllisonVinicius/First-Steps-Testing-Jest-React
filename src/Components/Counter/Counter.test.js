@@ -122,7 +122,7 @@ test("Deve adiconar a classe counter__title--decrement no titlo, quando o valor 
 
    
     // testar se antes de ocorrer o evento do click ele esta tira uma unidade, que é o correto
-   expect(screen.quSeryByText("0")).not.toHaveClass('counter__title--decrement')
+   expect(screen.queryByText("0")).not.toHaveClass('counter__title--decrement')
 
     //testar o evento do botão, se esta acionando.
     userEvent.click(buttonDecrement);
