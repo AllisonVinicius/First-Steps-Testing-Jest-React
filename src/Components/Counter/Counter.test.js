@@ -99,6 +99,42 @@ test("Se esta decrementando, quando aciona o botão", () => {
 
 
 
+test("Deve adiconar a classe counter no titulo quando o valor for > que 0", () => {
+    render(<Counter />) //vai renderizar meu component count, render retorna um obj
+   
+    const buttonIncrement= screen.getByRole("button", {name: /increment/i}); //se existe um elemento button no components
+
+   
+    // testar se antes de ocorrer o evento do click ele esta tira uma unidade, que é o correto
+   expect(screen.queryByText("0")).not.toHaveClass('counter__title--increment')
+
+    //testar o evento do botão, se esta acionando.
+    userEvent.click(buttonIncrement);
+    expect(screen.getByText("1")).toHaveClass('counter__title--increment'); //verifico se esta com o valor no documento apos testar o evento
+       
+});
+
+
+test("Deve adiconar a classe counter__title--decrement no titlo, quando o valor for menor do que 0", () => {
+    render(<Counter />) //vai renderizar meu component count, render retorna um obj
+   
+    const buttonDecrement= screen.getByRole("button", {name: /decrementar/i}); //se existe um elemento button no components
+
+   
+    // testar se antes de ocorrer o evento do click ele esta tira uma unidade, que é o correto
+   expect(screen.quSeryByText("0")).not.toHaveClass('counter__title--decrement')
+
+    //testar o evento do botão, se esta acionando.
+    userEvent.click(buttonDecrement);
+    expect(screen.getByText("-1")).toHaveClass('counter__title--decrement'); //verifico se esta com o valor no documento apos testar o evento
+       
+});
+
+
+
+
+
+
 
 
 
